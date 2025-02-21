@@ -1,51 +1,27 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import Estatistica from './components/Estatistica'
-
-function Home() {
-  return (
-    <div>
-      <h1>Bem-vindo à Calculadora Online!</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/estatistica">Estatística</Link>
-          </li>
-          <li>
-            <Link to="/regressao">Regressão Linear</Link>
-          </li>
-          <li>
-            <Link to="/probabilidade">Probabilidade</Link>
-          </li>
-          <li>
-            <Link to="/financeiro">Financeiro</Link>
-          </li>
-          <li>
-            <Link to="/unidades">Unidades de Medida</Link>
-          </li>
-          <li>
-            <Link to="/eletrica">Elétrica</Link>
-          </li>
-          <li>
-            <Link to="/quimica">Química</Link>
-          </li>
-          <li>
-            <Link to="/tabela-periodica">Tabela Periódica</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  )
-}
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home/Home'
+import Estatistica from './pages/Estatistica/Estatistica'
+import Header from './components/Header/Header'
+import Sidebar from './components/Sidebar/Sidebar'
+import Footer from './components/Footer/Footer'
+import './App.css'
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/estatistica" element={<Estatistica />} />
-        {/* Adicione rotas para os outros componentes */}
-      </Routes>
+      <Header />
+      <div className="main-container">
+        <Sidebar />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/estatistica" element={<Estatistica />} />
+            {/* Adicione rotas para os outros componentes */}
+          </Routes>
+        </div>
+      </div>
+      <Footer />
     </Router>
   )
 }
